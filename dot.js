@@ -1,7 +1,7 @@
 (function(undefined) {
 	var root = this;
 	
-	// Object cloning function, uses jQuery/Underscore/Object.clone depending on what's available
+	// Object cloning function, uses jQuery/Underscore/Object.create depending on what's available
 	
 	var clone = function (object) {
 		if (typeof Object.create !== 'undefined') {
