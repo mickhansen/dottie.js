@@ -4,14 +4,14 @@
 	// Object cloning function, uses jQuery/Underscore/Object.clone depending on what's available
 	
 	var clone = function (object) {
-		if (Object.create !== undefined) {
+		if (typeof Object.create !== 'undefined') {
 			return Object.create(object);
 		}
-		if (root.jQuery !== undefined) {
-			return root.jQuery.extend({}, object);
+		if (typeof jQuery !== 'undefined') {
+			return jQuery.extend({}, object);
 		}
-		if (root._ !== undefined) {
-			return root._.extend({}, object);
+		if (typeof _ !== 'undefined') {
+			return _.extend({}, object);
 		}
 		
 	};
