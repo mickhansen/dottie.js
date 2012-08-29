@@ -1,0 +1,31 @@
+{
+    "paths": [
+        "lib/*.js",
+        "lib/buster-test-cli/*.js",
+        "lib/buster-test-cli/browser/*.js",
+        "lib/buster-test-cli/cli/*.js",
+        "lib/buster-test-cli/server/*.js",
+        "lib/buster-test-cli/test-runner/*.js",
+        "test/*.js",
+        "test/browser/*.js",
+        "test/node/*.js",
+        "test/node/integration/*.js",
+        "test/node/unit/*.js",
+        "test/node/unit/cli/*.js",
+        "test/node/unit/cli/runners/*.js",
+        "test/node/unit/test-runner/*.js"
+    ],
+    "linterOptions": {
+        "node": true,
+        "onevar": false,
+        "plusplus": false,
+        "nomen": false,
+        "forin": true,
+        "regexp": false,
+        "predef": [
+            "assert",
+            "refute",
+            "buster"
+        ]
+    }
+}

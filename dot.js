@@ -25,8 +25,13 @@
 		return Dot.transform.apply(this, args);
 	};
 	
-	// Traverse object according to path, return value if found - Return undefined if destination is unreachable
+	// Legacy syntax, changed syntax to have get/set be similar in arg order
 	Dot.find = function(path, object) {
+		return Dot.get(object, path);
+	};
+
+	// Traverse object according to path, return value if found - Return undefined if destination is unreachable
+	Dot.get = function(object, path) {
 		var pieces = path.split('.'), current = object, piece;
 		
 		for (var index in pieces) {
@@ -37,6 +42,10 @@
 			current = current[piece];
 		};
 		return current;
+	};
+
+	Dot.delete = function(object, path) {
+
 	};
 	
 	// Transform unnested object with .-seperated keys into a nested object.
