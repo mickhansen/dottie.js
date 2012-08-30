@@ -44,6 +44,7 @@
 		return current;
 	};
 
+	// Set nested value
 	Dot.set = function(object, path, value) {
 		var pieces = path.split('.'), current = object, piece, length = pieces.length;
 		
@@ -63,14 +64,11 @@
 		current[piece] = value;
 	};
 
+	// Set default nested value
 	Dot.default = function(object, path, value) {
 		if (Dot.get(object, path) === undefined) {
 			Dot.set(object, path, value);
 		}
-	};
-
-	Dot.delete = function(object, path) {
-
 	};
 	
 	// Transform unnested object with .-seperated keys into a nested object.
