@@ -44,6 +44,25 @@
 		return current;
 	};
 
+	Dot.set = function(object, path, value) {
+		var pieces = path.split('.'), current = object, piece, length = pieces.length;
+		
+		for (var index in pieces) {
+			piece = pieces[index];
+			if (!current.hasOwnProperty(piece)) {
+				current[piece] = {};
+			}
+
+			if (index == (length - 1)) {
+				current[piece] = value;
+			} else {
+				current = current[piece];
+			}
+		};
+
+		current[piece] = value;
+	};
+
 	Dot.delete = function(object, path) {
 
 	};
