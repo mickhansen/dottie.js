@@ -63,6 +63,12 @@
 		current[piece] = value;
 	};
 
+	Dot.default = function(object, path, value) {
+		if (Dot.get(object, path) === undefined) {
+			Dot.set(object, path, value);
+		}
+	};
+
 	Dot.delete = function(object, path) {
 
 	};
