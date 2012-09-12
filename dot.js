@@ -34,14 +34,21 @@
 	Dot.get = function(object, path) {
 		var pieces = path.split('.'), current = object, piece;
 		
-		for (var index in pieces) {
-			piece = pieces[index];
-			if (!current.hasOwnProperty(piece)) {
-				return undefined;
+		if (current) {
+			for (var index in pieces) {
+				piece = pieces[index];
+				if (!current.hasOwnProperty(piece)) {
+					return undefined;
+				}
+				current = current[piece];
+
+				if (!current) {
+					return undefined;
+				}
 			}
-			current = current[piece];
-		};
-		return current;
+			return current;
+		}
+		return undefined;
 	};
 
 	// Set nested value
