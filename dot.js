@@ -42,7 +42,7 @@
 				}
 				current = current[piece];
 
-				if (!current) {
+				if (current === undefined) {
 					return undefined;
 				}
 			}
