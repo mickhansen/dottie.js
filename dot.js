@@ -25,18 +25,57 @@
 		return Dot.transform.apply(this, args);
 	};
 	
-	// Traverse object according to path, return value if found - Return undefined if destination is unreachable
+	// Legacy syntax, changed syntax to have get/set be similar in arg order
 	Dot.find = function(path, object) {
+		return Dot.get(object, path);
+	};
+
+	// Traverse object according to path, return value if found - Return undefined if destination is unreachable
+	Dot.get = function(object, path) {
 		var pieces = path.split('.'), current = object, piece;
+		
+		if (current) {
+			for (var index in pieces) {
+				piece = pieces[index];
+				if (!current.hasOwnProperty(piece)) {
+					return undefined;
+				}
+				current = current[piece];
+
+				if (current === undefined) {
+					return undefined;
+				}
+			}
+			return current;
+		}
+		return undefined;
+	};
+
+	// Set nested value
+	Dot.set = function(object, path, value) {
+		var pieces = path.split('.'), current = object, piece, length = pieces.length;
 		
 		for (var index in pieces) {
 			piece = pieces[index];
 			if (!current.hasOwnProperty(piece)) {
-				return undefined;
+				current[piece] = {};
 			}
-			current = current[piece];
+
+			if (index == (length - 1)) {
+				current[piece] = value;
+			} else {
+				current = current[piece];
+			}
 		};
-		return current;
+
+		current[piece] = value;
+	};
+
+	// Set default nested value
+	Dot.default = function(object, path, value) {
+		if (Dot.get(object, path) === undefined) {
+			Dot.set(object, path, value);
+		}
 	};
 	
 	// Transform unnested object with .-seperated keys into a nested object.

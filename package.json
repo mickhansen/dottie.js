@@ -1,8 +1,14 @@
 {
-  "name"          : "dot",
-  "description"   : "Object traversing/manipulation util",
-  "author"        : "Mick Hansen <mh@innofluence.com>",
-  "repository"    : {"type": "git", "url": "git://github.com/innofluence/dot.js.git"},
-  "main"          : "dot.js",
-  "version"       : "0.0.1"
+	"name"          : "dot",
+	"version"       : "0.0.4",
+	"devDependencies": {
+		"buster": "0.6.2"
+	},
+	"description"   : "Object traversing/manipulation util",
+	"author"        : "Mick Hansen <mh@innofluence.com>",
+	"repository"    : {"type": "git", "url": "git://github.com/innofluence/dot.js.git"},
+	"main"          : "dot.js",
+	"scripts": {
+		"test": "./node_modules/.bin/buster-test"
+	}
 }
