@@ -66,7 +66,7 @@
 			} else {
 				current = current[piece];
 			}
-		};
+		}
 
 		current[piece] = value;
 	};

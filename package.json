@@ -1,5 +1,5 @@
 {
-	"name"          : "dot",
+	"name"          : "dot.js",
 	"version"       : "0.0.4",
 	"devDependencies": {
 		"buster": "0.6.2"
