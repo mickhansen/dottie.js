@@ -4,7 +4,10 @@ Object traversing/manipulation util
 ## Install
 `npm install dot`
 
-## Get value
+## Usage
+For detailed usage, check source or tests.
+
+### Get value
 Gets nested value, or undefined if unreachable.
 
     var values = {
@@ -18,12 +21,12 @@ Gets nested value, or undefined if unreachable.
     Dot.get(values, 'some.nested.key'); // returns 'foobar'
     Dot.get(values, 'some.undefined.key'); // returns undefined
 
-## Set value
+### Set value
 Sets nested value, creates nested structure if needed
 
 `Dot.set(values, 'some.nested.value', someValue);`
 
-## Transform object
+### Transform object
 Transform object from keys with dot notation to nested objects
 
     var values = {
