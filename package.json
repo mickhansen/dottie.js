@@ -1,5 +1,5 @@
 {
-  "name"          : "dot.js",
+  "name"          : "dot",
   "description"   : "Object traversing/manipulation util",
   "author"        : "Mick Hansen <mh@innofluence.com>",
   "repository"    : {"type": "git", "url": "git://github.com/innofluence/dot.js.git"},
