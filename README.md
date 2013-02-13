@@ -6,11 +6,11 @@ Object traversing/manipulation util
 
 ## Get value
 Gets nested value, or undefined if unreachable.
-`Dot.get(object, 'some.nested.key');
+`Dot.get(object, 'some.nested.key');`
 
 ## Set value
 Sets nested value, creates nested structure if needed
-`Dot.set(object, 'some.nested.value', someValue);
+`Dot.set(object, 'some.nested.value', someValue);`
 
 ## Transform object
 Transform object from keys with dot notation to nested objects
