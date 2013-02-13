@@ -7,7 +7,16 @@ Object traversing/manipulation util
 ## Get value
 Gets nested value, or undefined if unreachable.
 
-    Dot.get(object, 'some.nested.key');
+    var object = {
+        some: {
+            nested: {
+                key: 'foobar';
+            }
+        }
+    }
+
+    Dot.get(object, 'some.nested.key'); // returns 'foobar'
+    Dot.get(object, 'some.undefined.key'); // returns undefined
 
 ## Set value
 Sets nested value, creates nested structure if needed
