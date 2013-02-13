@@ -1,6 +1,3 @@
-#dot
-Object traversing/manipulation util
-
 ## Install
 `npm install dot`
 
