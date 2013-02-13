@@ -2,7 +2,7 @@
 	"name"          : "dot.js",
 	"version"       : "0.0.5",
 	"devDependencies": {
-		"buster": "0.6.2"
+		"buster": "*"
 	},
 	"description"   : "Object traversing/manipulation util",
 	"author"        : "Mick Hansen <mh@innofluence.com>",
