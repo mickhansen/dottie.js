@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/innofluence/dot.js.png)](http://travis-ci.org/innofluence/dot.js)
+
 ## Install
 `npm install dot`
 
