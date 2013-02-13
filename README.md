@@ -6,7 +6,6 @@ For detailed usage, check source or tests.
 
 ### Get value
 Gets nested value, or undefined if unreachable.
-
     var values = {
         some: {
             nested: {
