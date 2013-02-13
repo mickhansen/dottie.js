@@ -7,7 +7,7 @@ Object traversing/manipulation util
 ## Get value
 Gets nested value, or undefined if unreachable.
 
-    var object = {
+    var values = {
         some: {
             nested: {
                 key: 'foobar';
@@ -15,15 +15,33 @@ Gets nested value, or undefined if unreachable.
         }
     }
 
-    Dot.get(object, 'some.nested.key'); // returns 'foobar'
-    Dot.get(object, 'some.undefined.key'); // returns undefined
+    Dot.get(values, 'some.nested.key'); // returns 'foobar'
+    Dot.get(values, 'some.undefined.key'); // returns undefined
 
 ## Set value
 Sets nested value, creates nested structure if needed
 
-`Dot.set(object, 'some.nested.value', someValue);`
+`Dot.set(values, 'some.nested.value', someValue);`
 
 ## Transform object
 Transform object from keys with dot notation to nested objects
 
-`object = Dot.transform(object)`
+    var values = {
+        'user.name': 'Mick Hansen',
+        'user.email': 'mh@innofluence.com',
+        'user.professional.title': 'Developer',
+        'user.professional.employer': 'Innofluence'
+    };
+    var transformed = Dot.transform(values);
+
+    transforms is now equal to =
+    {
+        user: {
+            name: 'Mick Hansen',
+            email: 'mh@innofluence.com',
+            professional: {
+                title: 'Developer',
+                employer: 'Innofluence'
+            }
+        }
+    }
