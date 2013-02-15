@@ -1,9 +1,9 @@
 var buster = require('buster'),
-	Dot = require('../dot');
+	dottie = require('../dottie');
 
 buster.spec.expose();
 
-describe("Dot.find", function () {
+describe("dottie.find", function () {
 	var data = {
 		'foo': {
 			'bar': 'baz'
@@ -12,10 +12,10 @@ describe("Dot.find", function () {
 	};
 
 	it("should get first-level values", function () {
-		expect(Dot.find('zoo', data)).toEqual('lander');
+		expect(dottie.find('zoo', data)).toEqual('lander');
 	});
 
 	it("should get nested-level values", function () {
-		expect(Dot.find('foo.bar', data)).toEqual('baz');
+		expect(dottie.find('foo.bar', data)).toEqual('baz');
 	});
 });

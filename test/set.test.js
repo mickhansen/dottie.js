@@ -1,9 +1,9 @@
 var buster = require('buster'),
-	Dot = require('../dot');
+	dottie = require('../dottie');
 
 buster.spec.expose();
 
-describe("Dot.set", function () {
+describe("dottie.set", function () {
 	var data = {
 		'foo': {
 			'bar': 'baa'
@@ -11,12 +11,12 @@ describe("Dot.set", function () {
 	};
 
 	it("should set nested values on existing structure", function () {
-		Dot.set(data, 'foo.bar', 'baz');
+		dottie.set(data, 'foo.bar', 'baz');
 		expect(data.foo.bar).toEqual('baz');
 	});
 
 	it("should create nested structure if not existing", function () {
-		Dot.set(data, 'level1.level2', 'foo');
+		dottie.set(data, 'level1.level2', 'foo');
 		expect(data.level1.level2).toEqual('foo');
 		expect(typeof data.level1).toEqual('object');
 	});
