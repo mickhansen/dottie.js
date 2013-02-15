@@ -1,7 +1,7 @@
-[![Build Status](https://secure.travis-ci.org/innofluence/dot.js.png)](http://travis-ci.org/innofluence/dot.js)
+[![Build Status](https://secure.travis-ci.org/innofluence/dottie.js.png)](http://travis-ci.org/innofluence/dottie.js)
 
 ## Install
-`npm install dot`
+`npm install dottie`
 
 ## Usage
 For detailed usage, check source or tests.
@@ -16,16 +16,16 @@ Gets nested value, or undefined if unreachable.
         }
     }
 
-    Dot.get(values, 'some.nested.key'); // returns 'foobar'
-    Dot.get(values, 'some.undefined.key'); // returns undefined
+    dottie.get(values, 'some.nested.key'); // returns 'foobar'
+    dottie.get(values, 'some.undefined.key'); // returns undefined
 
 ### Set value
 Sets nested value, creates nested structure if needed
 
-`Dot.set(values, 'some.nested.value', someValue);`
+`dottie.set(values, 'some.nested.value', someValue);`
 
 ### Transform object
-Transform object from keys with dot notation to nested objects
+Transform object from keys with dottie notation to nested objects
 
     var values = {
         'user.name': 'Mick Hansen',
@@ -33,7 +33,7 @@ Transform object from keys with dot notation to nested objects
         'user.professional.title': 'Developer',
         'user.professional.employer': 'Innofluence'
     };
-    var transformed = Dot.transform(values);
+    var transformed = dottie.transform(values);
 
     transforms is now equal to =
     {
