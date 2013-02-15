@@ -1,13 +1,14 @@
 [![Build Status](https://secure.travis-ci.org/innofluence/dottie.js.png)](http://travis-ci.org/innofluence/dottie.js)
 
 ## Install
-`npm install dottie`
+    npm install dottie
 
 ## Usage
 For detailed usage, check source or tests.
 
 ### Get value
 Gets nested value, or undefined if unreachable.
+
     var values = {
         some: {
             nested: {
@@ -22,7 +23,7 @@ Gets nested value, or undefined if unreachable.
 ### Set value
 Sets nested value, creates nested structure if needed
 
-`dottie.set(values, 'some.nested.value', someValue);`
+    dottie.set(values, 'some.nested.value', someValue);
 
 ### Transform object
 Transform object from keys with dottie notation to nested objects
