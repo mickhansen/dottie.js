@@ -1,10 +1,10 @@
 var buster = require('buster'),
-	Dot = require('../dot');
+	dottie = require('../dottie');
 
 buster.spec.expose();
 
-describe("Dot.transform", function () {
-	it("should create a properly nested object from a basic dot notated set of keys", function () {
+describe("dottie.transform", function () {
+	it("should create a properly nested object from a basic dottie notated set of keys", function () {
 		var values = {
 			'user.name': 'John Doe',
 			'user.email': 'jd@foobar.com',
@@ -12,7 +12,7 @@ describe("Dot.transform", function () {
 			'user.location.city': 'Zanzibar City'
 		};
 
-		var transformed = Dot.transform(values);
+		var transformed = dottie.transform(values);
 
 		expect(transformed.user).toBeDefined();
 		expect(transformed.user.location).toBeDefined();
@@ -24,7 +24,7 @@ describe("Dot.transform", function () {
 		expect(transformed.user.location.city).toEqual('Zanzibar City');
 	});
 
-	it("should be able to handle a mixture of nested properties and dot notated set of keys", function () {
+	it("should be able to handle a mixture of nested properties and dottie notated set of keys", function () {
 		var values = {
 			user: {
 				name: 'John Doe'
@@ -32,10 +32,10 @@ describe("Dot.transform", function () {
 			'user.email': 'jd@foobar.com',
 			'user.location.country': 'Zanzibar',
 			'user.location.city': 'Zanzibar City',
-			'project.title': 'Dot'
+			'project.title': 'dottie'
 		};
 
-		var transformed = Dot.transform(values);
+		var transformed = dottie.transform(values);
 
 		expect(transformed.user).toBeDefined();
 		expect(transformed.user.location).toBeDefined();
@@ -47,6 +47,6 @@ describe("Dot.transform", function () {
 
 		expect(transformed.user.email).toEqual('jd@foobar.com');
 		expect(transformed.user.location.city).toEqual('Zanzibar City');
-		expect(transformed.project.title).toEqual('Dot');
+		expect(transformed.project.title).toEqual('dottie');
 	});
 });
