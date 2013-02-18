@@ -99,6 +99,8 @@
 					}
 					current = current[piece];
 				}
+			} else {
+				transformed[key] = transformed[key]; // Ensure that properties exist on the object, not just the prototype
 			}
 		}
 		
