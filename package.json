@@ -1,14 +1,17 @@
 {
-	"name"          : "dottie",
-	"version"       : "0.0.6",
-	"devDependencies": {
-		"buster": "*"
-	},
-	"description"   : "Object traversing/manipulation util",
-	"author"        : "Mick Hansen <mh@innofluence.com>",
-	"repository"    : {"type": "git", "url": "git://github.com/innofluence/dottie.js.git"},
-	"main"          : "dottie.js",
-	"scripts": {
-		"test": "./node_modules/.bin/buster-test"
-	}
+  "name": "dottie",
+  "version": "0.0.6-1",
+  "devDependencies": {
+    "buster": "*"
+  },
+  "description": "Object traversing/manipulation util",
+  "author": "Mick Hansen <mh@innofluence.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/innofluence/dottie.js.git"
+  },
+  "main": "dottie.js",
+  "scripts": {
+    "test": "./node_modules/.bin/buster-test"
+  }
 }
