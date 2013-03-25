@@ -15,6 +15,9 @@
 		}
 		
 	};
+	
+	// Weird IE shit, objects do not have hasOwn, but the prototype does...
+	var hasOwnProp = Object.prototype.hasOwnProperty;
 
 	var Dot = function() {
 		var args = Array.prototype.slice.call(arguments);
@@ -37,7 +40,7 @@
 		if (current) {
 			for (var index in pieces) {
 				piece = pieces[index];
-				if (!current.hasOwnProperty(piece)) {
+				if (!hasOwnProp.call(current, piece)) {
 					return undefined;
 				}
 				current = current[piece];
@@ -57,7 +60,7 @@
 		
 		for (var index in pieces) {
 			piece = pieces[index];
-			if (!current.hasOwnProperty(piece)) {
+			if (!hasOwnProp.call(current, piece)) {
 				current[piece] = {};
 			}
 
