@@ -77,7 +77,7 @@
 	};
 
 	// Set default nested value
-	Dot.default = function(object, path, value) {
+	Dot['default'] = function(object, path, value) {
 		if (Dot.get(object, path) === undefined) {
 			Dot.set(object, path, value);
 		}
