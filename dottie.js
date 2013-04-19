@@ -38,7 +38,7 @@
 		var pieces = path.split('.'), current = object, piece;
 
 		if (current) {
-			for (var index in pieces) {
+			for (var index = 0, length = pieces.length; index < length; index++) {
 				piece = pieces[index];
 				if (!hasOwnProp.call(current, piece)) {
 					return undefined;
@@ -58,7 +58,7 @@
 	Dot.set = function(object, path, value) {
 		var pieces = path.split('.'), current = object, piece, length = pieces.length;
 
-		for (var index in pieces) {
+		for (var index = 0, length = pieces.length; index < length; index++) {
 			piece = pieces[index];
 			if (!hasOwnProp.call(current, piece) || current[piece] === undefined) {
 				current[piece] = {};
