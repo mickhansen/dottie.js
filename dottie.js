@@ -58,7 +58,7 @@
 	Dot.set = function(object, path, value) {
 		var pieces = path.split('.'), current = object, piece, length = pieces.length;
 
-		for (var index = 0, length = pieces.length; index < length; index++) {
+		for (var index = 0; index < length; index++) {
 			piece = pieces[index];
 			if (!hasOwnProp.call(current, piece) || current[piece] === undefined) {
 				current[piece] = {};
