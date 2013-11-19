@@ -1,7 +1,5 @@
-var buster = require('buster'),
+var expect = require("expect.js"),
 	dottie = require('../dottie');
-
-buster.spec.expose();
 
 describe("dottie.find", function () {
 	var data = {
@@ -12,10 +10,10 @@ describe("dottie.find", function () {
 	};
 
 	it("should get first-level values", function () {
-		expect(dottie.find('zoo', data)).toEqual('lander');
+		expect(dottie.find('zoo', data)).to.equal('lander');
 	});
 
 	it("should get nested-level values", function () {
-		expect(dottie.find('foo.bar', data)).toEqual('baz');
+		expect(dottie.find('foo.bar', data)).to.equal('baz');
 	});
 });

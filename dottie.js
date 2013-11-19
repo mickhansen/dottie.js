@@ -24,22 +24,22 @@
 	// Weird IE shit, objects do not have hasOwn, but the prototype does...
 	var hasOwnProp = Object.prototype.hasOwnProperty;
 
-	var Dot = function() {
+	var Dottie = function() {
 		var args = Array.prototype.slice.call(arguments);
 
 		if (args.length == 2) {
-			return Dot.find.apply(this, args);
+			return Dottie.find.apply(this, args);
 		}
-		return Dot.transform.apply(this, args);
+		return Dottie.transform.apply(this, args);
 	};
 
 	// Legacy syntax, changed syntax to have get/set be similar in arg order
-	Dot.find = function(path, object) {
-		return Dot.get(object, path);
+	Dottie.find = function(path, object) {
+		return Dottie.get(object, path);
 	};
 
 	// Traverse object according to path, return value if found - Return undefined if destination is unreachable
-	Dot.get = function(object, path) {
+	Dottie.get = function(object, path) {
 		var pieces = path.split('.'), current = object, piece;
 
 		if (current) {
@@ -60,7 +60,7 @@
 	};
 
 	// Set nested value
-	Dot.set = function(object, path, value) {
+	Dottie.set = function(object, path, value) {
 		var pieces = path.split('.'), current = object, piece, length = pieces.length;
 
 		for (var index = 0; index < length; index++) {
@@ -82,14 +82,14 @@
 	};
 
 	// Set default nested value
-	Dot['default'] = function(object, path, value) {
-		if (Dot.get(object, path) === undefined) {
-			Dot.set(object, path, value);
+	Dottie['default'] = function(object, path, value) {
+		if (Dottie.get(object, path) === undefined) {
+			Dottie.set(object, path, value);
 		}
 	};
 
 	// Transform unnested object with .-seperated keys into a nested object.
-	Dot.transform = function(object) {
+	Dottie.transform = function(object) {
 		var pieces, piecesLength, current, transformed = clone(object), piece;
 		for (var key in transformed) {
 			if (key.indexOf('.') !== -1) {
@@ -118,12 +118,13 @@
 	};
 
 	if (typeof module !== 'undefined' && module.exports) {
-		exports = module.exports = Dot;
+		exports = module.exports = Dottie;
 	} else {
-		root['Dot'] = Dot;
+		root['Dottie'] = Dottie;
+		root['Dot'] = Dottie; //BC
 
 		if (typeof define === "function") {
-			define([], function () { return Dot; });
+			define([], function () { return Dottie; });
 		}
 	}
 })();

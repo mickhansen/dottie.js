@@ -1,7 +1,5 @@
-var buster = require('buster'),
+var expect = require("expect.js"),
 	dottie = require('../dottie');
-
-buster.spec.expose();
 
 describe("dottie.transform", function () {
 	it("should create a properly nested object from a basic dottie notated set of keys", function () {
@@ -14,14 +12,14 @@ describe("dottie.transform", function () {
 
 		var transformed = dottie.transform(values);
 
-		expect(transformed.user).toBeDefined();
-		expect(transformed.user.location).toBeDefined();
+		expect(transformed.user).not.to.be(undefined);
+		expect(transformed.user.location).not.to.be(undefined);
 
-		expect(transformed.user).toBeObject();
-		expect(transformed.user.location).toBeObject();
+		expect(transformed.user).to.be.an('object');
+		expect(transformed.user.location).to.be.an('object');
 
-		expect(transformed.user.email).toEqual('jd@foobar.com');
-		expect(transformed.user.location.city).toEqual('Zanzibar City');
+		expect(transformed.user.email).to.equal('jd@foobar.com');
+		expect(transformed.user.location.city).to.equal('Zanzibar City');
 	});
 
 	it("should be able to handle a mixture of nested properties and dottie notated set of keys", function () {
@@ -37,17 +35,17 @@ describe("dottie.transform", function () {
 
 		var transformed = dottie.transform(values);
 
-		expect(transformed.user).toBeDefined();
-		expect(transformed.user.location).toBeDefined();
-		expect(transformed.project).toBeDefined();
+		expect(transformed.user).not.to.be(undefined);
+		expect(transformed.user.location).not.to.be(undefined);
+		expect(transformed.project).not.to.be(undefined);
 
-		expect(transformed.user).toBeObject();
-		expect(transformed.user.location).toBeObject();
-		expect(transformed.project).toBeObject();
+		expect(transformed.user).to.be.an('object');
+		expect(transformed.user.location).to.be.an('object');
+		expect(transformed.project).to.be.an('object');
 
-		expect(transformed.user.email).toEqual('jd@foobar.com');
-		expect(transformed.user.location.city).toEqual('Zanzibar City');
-		expect(transformed.project.title).toEqual('dottie');
+		expect(transformed.user.email).to.equal('jd@foobar.com');
+		expect(transformed.user.location.city).to.equal('Zanzibar City');
+		expect(transformed.project.title).to.equal('dottie');
 	});
 
 	it("should be able to handle base level properties together with nested", function () {
@@ -59,14 +57,14 @@ describe("dottie.transform", function () {
 
 		var transformed = dottie.transform(values);
 
-		expect(transformed.client).toBeDefined();
-		expect(transformed.hasOwnProperty('client')).toBeTruthy(); // Ensure that the property is actually on the object itself, not on the prototype.
-		expect(transformed.customer).toBeDefined();
+		expect(transformed.client).not.to.be(undefined);
+		expect(transformed.hasOwnProperty('client')).to.be.ok(); // Ensure that the property is actually on the object itself, not on the prototype.
+		expect(transformed.customer).not.to.be(undefined);
 
-		expect(transformed.customer).toBeObject();
+		expect(transformed.customer).to.be.an('object');
 
-		expect(transformed.client).toEqual('Lolcat');
-		expect(transformed.customer.name).toEqual('John Doe');
-		expect(transformed.customer.age).toEqual(15);
+		expect(transformed.client).to.equal('Lolcat');
+		expect(transformed.customer.name).to.equal('John Doe');
+		expect(transformed.customer.age).to.equal(15);
 	});
 });

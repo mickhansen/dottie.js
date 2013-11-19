@@ -2,16 +2,17 @@
   "name": "dottie",
   "version": "0.0.8-0",
   "devDependencies": {
-    "buster": "*"
+    "expect.js": "~0.2.0",
+    "mocha": "~1.14.0"
   },
   "description": "Object traversing/manipulation util",
-  "author": "Mick Hansen <mh@innofluence.com>",
+  "author": "Mick Hansen <maker@mhansen.io>",
   "repository": {
     "type": "git",
-    "url": "git://github.com/innofluence/dottie.js.git"
+    "url": "git://github.com/greenwoodio/dottie.js.git"
   },
   "main": "dottie.js",
   "scripts": {
-    "test": "./node_modules/.bin/buster-test"
+    "test": "./node_modules/mocha/bin/mocha -t 5000 -s 100 --reporter spec test/"
   }
 }
