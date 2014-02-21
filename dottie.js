@@ -97,7 +97,7 @@
 				piecesLength = pieces.length;
 				current = transformed;
 
-				for (var index in pieces) {
+				for (var index = 0; index < piecesLength; index++) {
 					piece = pieces[index];
 					if (index != (piecesLength - 1) && !current.hasOwnProperty(piece)) {
 						current[piece] = {};

@@ -1,6 +1,24 @@
 var expect = require("expect.js"),
 	dottie = require('../dottie');
 
+/* If people modify the array prototype Dottie should not be affected */
+Array.prototype.getByName = function(name) {
+    for (var i = 0, len = this.length; i < len; i++) {
+        if (typeof this[i] != "object") continue;
+        if (this[i].name === name) return this[i];
+
+    }
+};
+Array.prototype.getByType = function(type) {
+    var newvalues = [];
+    for (var i = 0, len = this.length; i < len; i++) {
+        if (typeof this[i] != "object") continue;
+        if (this[i].type === type) newvalues.push(this[i]);
+    }
+    if (newvalues.length <= 0) newvalues = undefined;
+    return newvalues;
+};
+
 describe("dottie.get", function () {
 	var data = {
 		'foo': {
