@@ -85,4 +85,19 @@ describe("dottie.transform", function () {
 		expect(transformed.customer.name).to.equal('John Doe');
 		expect(transformed.customer.age).to.equal(15);
 	});
+
+	it("should be able to handle null valued properties, not assigning nested level objects", function() {
+		var values = {
+			'section.id': 20,
+			'section.layout': null,
+			'section.layout.id': null,
+			'section.layout.name': null
+		};
+
+		var transformed = dottie.transform(values);
+
+		expect(transformed.section.layout).to.be(null);
+		expect(transformed['section.layout.id']).to.be(undefined);
+		expect(transformed['section.layout.name']).to.be(undefined);
+	});
 });

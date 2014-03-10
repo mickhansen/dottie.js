@@ -104,10 +104,14 @@
 					}
 
 					if (index == (piecesLength - 1)) {
-						current[piece] = object[key];
+						if (current !== null) {
+							current[piece] = object[key];
+						}
 						delete transformed[key];
 					}
-					current = current[piece];
+					if (current != null) {
+						current = current[piece];
+					} else break;
 				}
 			} else {
 				transformed[key] = transformed[key]; // Ensure that properties exist on the object, not just the prototype
