@@ -90,8 +90,8 @@
 
 	// Transform unnested object with .-seperated keys into a nested object.
 	Dottie.transform = function(object) {
-		var pieces, piecesLength, current, transformed = clone(object), piece;
-		for (var key in transformed) {
+		var pieces, piecesLength, current, transformed = {}, piece;
+		for (var key in object) {
 			if (key.indexOf('.') !== -1) {
 				pieces = key.split('.');
 				piecesLength = pieces.length;
@@ -105,15 +105,15 @@
 
 					if (index == (piecesLength - 1)) {
 						current[piece] = object[key];
-						delete transformed[key];
 					}
 
 					current = current[piece];
 					if (current === null) {
-						delete transformed[key];
 						break;
 					}
 				}
+			} else {
+				transformed[key] = object[key];
 			}
 		}
 
