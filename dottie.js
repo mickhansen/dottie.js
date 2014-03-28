@@ -89,8 +89,17 @@
 	};
 
 	// Transform unnested object with .-seperated keys into a nested object.
-	Dottie.transform = function(object) {
-		var pieces, piecesLength, current, transformed = {}, piece;
+	Dottie.transform = function(object, options) {
+		if (Array.isArray(object)) {
+			return object.map(Dottie.transform);
+		}
+
+		var pieces,
+			piecesLength,
+			piece,
+			current,
+			transformed = {};
+
 		for (var key in object) {
 			if (key.indexOf('.') !== -1) {
 				pieces = key.split('.');

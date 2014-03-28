@@ -100,4 +100,23 @@ describe("dottie.transform", function () {
 		expect(transformed['section.layout.id']).to.be(undefined);
 		expect(transformed['section.layout.name']).to.be(undefined);
 	});
+
+	it("supports arrays", function () {
+		var values = [
+			{
+				'customer.name': 'John Doe',
+				'customer.age': 15,
+				'client': 'Lolcat'
+			},
+			{
+				'client.name': 'John Doe',
+				'client.age': 15,
+				'customer': 'Lolcat'
+			}
+		];
+
+		var transformed = dottie.transform(values);
+		expect(transformed[0].customer.name).to.equal('John Doe');
+		expect(transformed[1].client.name).to.equal('John Doe');
+	});
 });
