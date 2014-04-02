@@ -37,7 +37,8 @@ Transform object from keys with dottie notation to nested objects
     };
     var transformed = dottie.transform(values);
 
-    transforms is now equal to =
+    // transforms is now equal to =
+
     {
         user: {
             name: 'Mick Hansen',
@@ -46,5 +47,22 @@ Transform object from keys with dottie notation to nested objects
                 title: 'Developer',
                 employer: 'Innofluence'
             }
+        }
+    }
+
+#### With a custom delimiter
+
+    var values = {
+        'user_name': 'Mick Hansen',
+        'user_email': 'mh@innofluence.com'
+    };
+    var transformed = dottie.transform(values, { delimiter: '_' });
+
+    // transforms is now equal to =
+
+    {
+        user: {
+            name: 'Mick Hansen',
+            email: 'mh@innofluence.com'
         }
     }

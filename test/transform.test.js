@@ -119,4 +119,30 @@ describe("dottie.transform", function () {
 		expect(transformed[0].customer.name).to.equal('John Doe');
 		expect(transformed[1].client.name).to.equal('John Doe');
 	});
+
+	it("supports custom delimiters", function () {
+		var values = {
+			user: {
+				name: 'John Doe'
+			},
+			'user_email': 'jd@foobar.com',
+			'user_location_country': 'Zanzibar',
+			'user_location_city': 'Zanzibar City',
+			'project_title': 'dottie'
+		};
+
+		var transformed = dottie.transform(values, { delimiter: '_' });
+
+		expect(transformed.user).not.to.be(undefined);
+		expect(transformed.user.location).not.to.be(undefined);
+		expect(transformed.project).not.to.be(undefined);
+
+		expect(transformed.user).to.be.an('object');
+		expect(transformed.user.location).to.be.an('object');
+		expect(transformed.project).to.be.an('object');
+
+		expect(transformed.user.email).to.equal('jd@foobar.com');
+		expect(transformed.user.location.city).to.equal('Zanzibar City');
+		expect(transformed.project.title).to.equal('dottie');
+	});
 });
