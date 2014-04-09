@@ -66,3 +66,7 @@ Transform object from keys with dottie notation to nested objects
             email: 'mh@innofluence.com'
         }
     }
+
+## License
+
+MIT
