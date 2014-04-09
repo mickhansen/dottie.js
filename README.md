@@ -27,7 +27,7 @@ dottie.get(values, 'some.undefined.key'); // returns undefined
 Sets nested value, creates nested structure if needed
 
 ```js
-  dottie.set(values, 'some.nested.value', someValue);
+dottie.set(values, 'some.nested.value', someValue);
 ```
 
 ### Transform object
