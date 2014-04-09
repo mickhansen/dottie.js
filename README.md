@@ -69,4 +69,4 @@ Transform object from keys with dottie notation to nested objects
 
 ## License
 
-[https://github.com/mickhansen/dottie.js/blob/master/LICENSE](MIT)
+[MIT](https://github.com/mickhansen/dottie.js/blob/master/LICENSE)
