@@ -1,6 +1,6 @@
 {
   "name": "dottie",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "devDependencies": {
     "expect.js": "~0.2.0",
     "mocha": "~1.14.0"

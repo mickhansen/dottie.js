@@ -89,23 +89,29 @@
 	};
 
 	// Transform unnested object with .-seperated keys into a nested object.
-	Dottie.transform = function(object, options) {
-		options = options || {};
-		options.delimiter = options.delimiter || '.';
-
+	Dottie.transform = function Dottie$transformfunction(object, options) {
 		if (Array.isArray(object)) {
 			return object.map(function(o) {
 				return Dottie.transform(o, options);
 			});
 		}
 
+		options = options || {};
+		options.delimiter = options.delimiter || '.';
+
 		var pieces,
 			piecesLength,
 			piece,
 			current,
-			transformed = {};
+			transformed = {},
+			key,
+			keys = Object.keys(object),
+			length = keys.length,
+			i;
 
-		for (var key in object) {
+		for (i = 0; i < length; i++) {
+			key = keys[i];
+
 			if (key.indexOf(options.delimiter) !== -1) {
 				pieces = key.split(options.delimiter);
 				piecesLength = pieces.length;
