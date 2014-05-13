@@ -10,63 +10,71 @@ For detailed usage, check source or tests.
 ### Get value
 Gets nested value, or undefined if unreachable.
 
-    var values = {
-        some: {
-            nested: {
-                key: 'foobar';
-            }
-        }
+```js
+var values = {
+  some: {
+    nested: {
+        key: 'foobar';
     }
+  }
+}
 
-    dottie.get(values, 'some.nested.key'); // returns 'foobar'
-    dottie.get(values, 'some.undefined.key'); // returns undefined
+dottie.get(values, 'some.nested.key'); // returns 'foobar'
+dottie.get(values, 'some.undefined.key'); // returns undefined
+```
 
 ### Set value
 Sets nested value, creates nested structure if needed
 
-    dottie.set(values, 'some.nested.value', someValue);
+```js
+dottie.set(values, 'some.nested.value', someValue);
+```
 
 ### Transform object
 Transform object from keys with dottie notation to nested objects
 
-    var values = {
-        'user.name': 'Mick Hansen',
-        'user.email': 'mh@innofluence.com',
-        'user.professional.title': 'Developer',
-        'user.professional.employer': 'Innofluence'
-    };
-    var transformed = dottie.transform(values);
+```js
+var values = {
+  'user.name': 'Mick Hansen',
+  'user.email': 'maker@mhansen.io',
+  'user.professional.title': 'Developer',
+  'user.professional.employer': 'Coshopr'
+};
+var transformed = dottie.transform(values);
 
-    // transforms is now equal to =
-
-    {
-        user: {
-            name: 'Mick Hansen',
-            email: 'mh@innofluence.com',
-            professional: {
-                title: 'Developer',
-                employer: 'Innofluence'
-            }
-        }
+/*
+{
+  user: {
+    name: 'Mick Hansen',
+    email: 'maker@mhansen.io',
+    professional: {
+      title: 'Developer',
+      employer: 'Coshopr'
     }
+  }
+}
+*/
+```
 
 #### With a custom delimiter
 
-    var values = {
-        'user_name': 'Mick Hansen',
-        'user_email': 'mh@innofluence.com'
-    };
-    var transformed = dottie.transform(values, { delimiter: '_' });
+```js
+var values = {
+  'user_name': 'Mick Hansen',
+  'user_email': 'maker@mhansen.io'
+};
+var transformed = dottie.transform(values, { delimiter: '_' });
 
-    // transforms is now equal to =
-
-    {
-        user: {
-            name: 'Mick Hansen',
-            email: 'mh@innofluence.com'
-        }
-    }
+/*
+{
+  user: {
+    name: 'Mick Hansen',
+    email: 'maker@mhansen.io'
+  }
+}
+*/
+```
 
 ## License
 
-MIT
+[MIT](https://github.com/mickhansen/dottie.js/blob/master/LICENSE)
