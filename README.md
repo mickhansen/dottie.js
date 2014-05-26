@@ -35,21 +35,21 @@ Transform object from keys with dottie notation to nested objects
 
 ```js
 var values = {
-  'user.name': 'Mick Hansen',
-  'user.email': 'maker@mhansen.io',
-  'user.professional.title': 'Developer',
-  'user.professional.employer': 'Coshopr'
+  'user.name': 'Gummy Bear',
+  'user.email': 'gummybear@candymountain.com',
+  'user.professional.title': 'King',
+  'user.professional.employer': 'Candy Mountain'
 };
 var transformed = dottie.transform(values);
 
 /*
 {
   user: {
-    name: 'Mick Hansen',
-    email: 'maker@mhansen.io',
+    name: 'Gummy Bear',
+    email: 'gummybear@candymountain.com',
     professional: {
-      title: 'Developer',
-      employer: 'Coshopr'
+      title: '': 'King',
+      employer: 'Candy Mountain'
     }
   }
 }
