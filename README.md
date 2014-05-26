@@ -48,7 +48,7 @@ var transformed = dottie.transform(values);
     name: 'Gummy Bear',
     email: 'gummybear@candymountain.com',
     professional: {
-      title: '': 'King',
+      title: 'King',
       employer: 'Candy Mountain'
     }
   }
