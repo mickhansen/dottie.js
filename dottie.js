@@ -39,24 +39,14 @@
 	};
 
 	// Traverse object according to path, return value if found - Return undefined if destination is unreachable
-	Dottie.get = function(object, path) {
-		var pieces = path.split('.'), current = object, piece;
+	Dottie.get = function(object, path, defaultVal) {
+		if (object == null) return defaultVal;
 
-		if (current) {
-			for (var index = 0, length = pieces.length; index < length; index++) {
-				piece = pieces[index];
-				if (!hasOwnProp.call(current, piece)) {
-					return undefined;
-				}
-				current = current[piece];
+		var names = path.split('.').reverse();
 
-				if (current === undefined) {
-					return undefined;
-				}
-			}
-			return current;
-		}
-		return undefined;
+		while(names.length && (object = object[names.pop()]) !== undefined);
+
+		return(object === undefined ? defaultVal : object);
 	};
 
 	// Set nested value

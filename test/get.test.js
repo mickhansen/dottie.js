@@ -45,4 +45,8 @@ describe("dottie.get", function () {
 	it("should return false values properly", function () {
 		expect(dottie.get(data, 'false.value')).to.equal(false);
 	});
+
+  it("should return the default value passed in if not found", function() {
+    expect(dottie.get(data, 'foo.zoo.lander', 'novalue')).to.equal('novalue');
+  })
 });

@@ -8,7 +8,7 @@
 For detailed usage, check source or tests.
 
 ### Get value
-Gets nested value, or undefined if unreachable.
+Gets nested value, or undefined if unreachable, or a default value if passed.
 
 ```js
 var values = {
@@ -21,6 +21,7 @@ var values = {
 
 dottie.get(values, 'some.nested.key'); // returns 'foobar'
 dottie.get(values, 'some.undefined.key'); // returns undefined
+dottie.get(values, 'some.undefined.key', 'defaultval'); // returns 'defaultval'
 ```
 
 ### Set value
