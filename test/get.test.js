@@ -27,6 +27,9 @@ describe("dottie.get", function () {
 		'zoo': 'lander',
 		'false': {
 			'value': false
+		},
+		'null': {
+			'value': null
 		}
 	};
 
@@ -46,7 +49,11 @@ describe("dottie.get", function () {
 		expect(dottie.get(data, 'false.value')).to.equal(false);
 	});
 
-  it("should return the default value passed in if not found", function() {
-    expect(dottie.get(data, 'foo.zoo.lander', 'novalue')).to.equal('novalue');
-  })
+	it("should return the default value passed in if not found", function() {
+    		expect(dottie.get(data, 'foo.zoo.lander', 'novalue')).to.equal('novalue');
+  	});
+
+	it("should return null of the value is null and not undefined", function() {
+		expect(dottie.get(data, 'null.value')).to.equal(null);
+	});
 });
