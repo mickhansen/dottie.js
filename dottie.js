@@ -44,9 +44,9 @@
 
 		var names = path.split('.').reverse();
 
-		while(names.length && (object = object[names.pop()]) != null);
+		while(names.length && (object = object[names.pop()]) !== undefined);
 
-		return(object == null ? defaultVal : object);
+		return(object === undefined ? defaultVal : object);
 	};
 
 	// Set nested value
