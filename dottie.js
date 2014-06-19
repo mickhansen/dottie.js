@@ -139,7 +139,7 @@
 		for (var key in object) {
 			if (hasOwnProp.call(object, key)) {
 				current = object[key];
-				if (current === Object(current)) {
+				if (Object.prototype.toString.call(current) === "[object Object]") {
 					nested = Dottie.flatten(current, seperator);
 
 					for (var _key in nested) {
