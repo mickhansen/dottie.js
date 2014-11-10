@@ -9,7 +9,7 @@
   "author": "Mick Hansen <maker@mhansen.io>",
   "repository": {
     "type": "git",
-    "url": "git://github.com/greenwoodio/dottie.js.git"
+    "url": "git://github.com/mickhansen/dottie.js.git"
   },
   "main": "dottie.js",
   "scripts": {
