@@ -3,20 +3,20 @@ var expect = require("expect.js"),
 
 /* If people modify the array prototype Dottie should not be affected */
 Array.prototype.getByName = function(name) {
-    for (var i = 0, len = this.length; i < len; i++) {
-        if (typeof this[i] != "object") continue;
-        if (this[i].name === name) return this[i];
-
-    }
+	for (var i = 0, len = this.length; i < len; i++) {
+		if (typeof this[i] != "object") continue;
+		if (this[i].name === name) return this[i];
+	}
 };
+
 Array.prototype.getByType = function(type) {
-    var newvalues = [];
-    for (var i = 0, len = this.length; i < len; i++) {
-        if (typeof this[i] != "object") continue;
-        if (this[i].type === type) newvalues.push(this[i]);
-    }
-    if (newvalues.length <= 0) newvalues = undefined;
-    return newvalues;
+	var newvalues = [];
+	for (var i = 0, len = this.length; i < len; i++) {
+		if (typeof this[i] != "object") continue;
+		if (this[i].type === type) newvalues.push(this[i]);
+	}
+	if (newvalues.length <= 0) newvalues = undefined;
+	return newvalues;
 };
 
 describe("dottie.get", function () {
@@ -30,7 +30,8 @@ describe("dottie.get", function () {
 		},
 		'null': {
 			'value': null
-		}
+		},
+		'nullvalue': null
 	};
 
 	it("should get first-level values", function () {
@@ -50,10 +51,19 @@ describe("dottie.get", function () {
 	});
 
 	it("should return the default value passed in if not found", function() {
-    		expect(dottie.get(data, 'foo.zoo.lander', 'novalue')).to.equal('novalue');
-  	});
+		expect(dottie.get(data, 'foo.zoo.lander', 'novalue')).to.equal('novalue');
+	});
 
 	it("should return null of the value is null and not undefined", function() {
 		expect(dottie.get(data, 'null.value')).to.equal(null);
+	});
+
+	it("should return undefined if accessing a child property of a null value", function () {
+		expect(dottie.get(data, 'nullvalue.childProp')).to.equal(undefined);
+		expect(dottie.get(data, 'null.value.childProp')).to.equal(undefined);
+	});
+
+	it("should return undefined if accessing a child property of a string value", function () {
+		expect(dottie.get(data, 'foo.bar.baz.yapa')).to.equal(undefined);
 	});
 });

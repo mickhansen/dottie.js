@@ -40,13 +40,16 @@
 
 	// Traverse object according to path, return value if found - Return undefined if destination is unreachable
 	Dottie.get = function(object, path, defaultVal) {
-		if (object == null) return defaultVal;
+		if (object === null) return defaultVal;
 
 		var names = path.split('.').reverse();
 
-		while(names.length && (object = object[names.pop()]) !== undefined);
+		while (names.length && (object = object[names.pop()]) !== undefined && object !== null);
 
-		return(object === undefined ? defaultVal : object);
+		// Handle cases where accessing a childprop of a null value
+		if (object === null && names.length) object = undefined;
+
+		return (object === undefined ? defaultVal : object);
 	};
 
 	// Set nested value
@@ -152,7 +155,7 @@
 		}
 
 		return flattened;
-	}
+	};
 
 	if (typeof module !== 'undefined' && module.exports) {
 		exports = module.exports = Dottie;

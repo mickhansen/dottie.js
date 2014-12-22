@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/mickhansen/dottie.js.png)](https://travis-ci.org/mickhansen/dottie.js.png)
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/mickhansen/dottie.js/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 ## Install
     npm install dottie
