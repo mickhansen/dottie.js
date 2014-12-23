@@ -40,7 +40,7 @@
 
 	// Traverse object according to path, return value if found - Return undefined if destination is unreachable
 	Dottie.get = function(object, path, defaultVal) {
-		if (object === null) return defaultVal;
+		if ([undefined, null].indexOf(object) > -1) return defaultVal;
 
 		var names = path.split('.').reverse();
 
