@@ -31,7 +31,10 @@ describe("dottie.get", function () {
 		'null': {
 			'value': null
 		},
-		'nullvalue': null
+		'nullvalue': null,
+		'nested.dot': {
+			'key': 'value'
+		}
 	};
 
 	it('should return undefined if value is undefined', function () {
@@ -69,5 +72,9 @@ describe("dottie.get", function () {
 
 	it("should return undefined if accessing a child property of a string value", function () {
 		expect(dottie.get(data, 'foo.bar.baz.yapa')).to.equal(undefined);
+	});
+
+	it('should get nested values with keys that have dots', function () {
+		expect(dottie.get(data, ['nested.dot', 'key'])).to.equal('value');
 	});
 });

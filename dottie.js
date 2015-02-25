@@ -42,7 +42,13 @@
 	Dottie.get = function(object, path, defaultVal) {
 		if ((object === undefined) || (object === null)) return defaultVal;
 
-		var names = path.split('.').reverse();
+		var names;
+
+		if (typeof path === "string") {
+			names = path.split('.').reverse();
+		} else if (Array.isArray(path)) {
+			names = path.reverse();
+		}
 
 		while (names.length && (object = object[names.pop()]) !== undefined && object !== null);
 
@@ -54,7 +60,7 @@
 
 	// Set nested value
 	Dottie.set = function(object, path, value) {
-		var pieces = path.split('.'), current = object, piece, length = pieces.length;
+		var pieces = Array.isArray(path) ? path : path.split('.'), current = object, piece, length = pieces.length;
 
 		for (var index = 0; index < length; index++) {
 			piece = pieces[index];

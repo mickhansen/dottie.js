@@ -15,12 +15,16 @@ var values = {
     nested: {
         key: 'foobar';
     }
+  },
+  'some.dot.included': {
+    key: 'barfoo'
   }
 }
 
 dottie.get(values, 'some.nested.key'); // returns 'foobar'
 dottie.get(values, 'some.undefined.key'); // returns undefined
 dottie.get(values, 'some.undefined.key', 'defaultval'); // returns 'defaultval'
+dottie.get(values, ['some.dot.included', 'key']); // returns 'barfoo'
 ```
 
 ### Set value
@@ -28,6 +32,7 @@ Sets nested value, creates nested structure if needed
 
 ```js
 dottie.set(values, 'some.nested.value', someValue);
+dottie.set(values, ['some.dot.included', 'value'], someValue);
 ```
 
 ### Transform object
