@@ -38,6 +38,10 @@
 		return Dottie.get(object, path);
 	};
 
+	// Dottie memoization flag
+	Dottie.memoizePath = true;
+	var memoized = {};
+
 	// Traverse object according to path, return value if found - Return undefined if destination is unreachable
 	Dottie.get = function(object, path, defaultVal) {
 		if ((object === undefined) || (object === null)) return defaultVal;
@@ -45,7 +49,16 @@
 		var names;
 
 		if (typeof path === "string") {
-			names = path.split('.').reverse();
+			if (Dottie.memoizePath) {
+				if (memoized[path]) {
+					names = memoized[path].slice(0);
+				} else {
+					names = path.split('.').reverse();
+					memoized[path] = names.slice(0);
+				}
+			} else {
+				names = path.split('.').reverse();
+			}
 		} else if (Array.isArray(path)) {
 			names = path.reverse();
 		}

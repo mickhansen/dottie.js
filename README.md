@@ -80,6 +80,10 @@ var transformed = dottie.transform(values, { delimiter: '_' });
 */
 ```
 
+## Performance
+
+`0.3.1` and up ships with `dottie.memoizePath: true` by default, if this causes any bugs, please try setting it to false
+
 ## License
 
 [MIT](https://github.com/mickhansen/dottie.js/blob/master/LICENSE)

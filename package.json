@@ -1,8 +1,10 @@
 {
   "name": "dottie",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "devDependencies": {
+    "benchmark": "^1.0.0",
     "expect.js": "~0.2.0",
+    "microtime": "^1.2.0",
     "mocha": "~1.14.0"
   },
   "description": "Object traversing/manipulation util",

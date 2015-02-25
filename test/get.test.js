@@ -20,6 +20,10 @@ Array.prototype.getByType = function(type) {
 };
 
 describe("dottie.get", function () {
+	var flags = {
+		memoizePath: [false, true]
+	};
+
 	var data = {
 		'foo': {
 			'bar': 'baz'
@@ -37,44 +41,63 @@ describe("dottie.get", function () {
 		}
 	};
 
-	it('should return undefined if value is undefined', function () {
-		expect(dottie.get(undefined, 'foo')).to.equal(undefined);
-	});
+	Object.keys(flags).forEach(function (flag) {
+		flags[flag].forEach(function (value) {
+			describe(flag+': '+value, function () {
+				beforeEach(function () {
+					dottie[flag] = value;
+				});
 
-	it("should get first-level values", function () {
-		expect(dottie.get(data, 'zoo')).to.equal('lander');
-	});
+				it('should return undefined if value is undefined', function () {
+					expect(dottie.get(undefined, 'foo')).to.equal(undefined);
+					expect(dottie.get(undefined, 'foo')).to.equal(undefined);
+				});
 
-	it("should get nested-level values", function () {
-		expect(dottie.get(data, 'foo.bar')).to.equal('baz');
-	});
+				it("should get first-level values", function () {
+					expect(dottie.get(data, 'zoo')).to.equal('lander');
+					expect(dottie.get(data, 'zoo')).to.equal('lander');
+				});
 
-	it("should return undefined if not found", function () {
-		expect(dottie.get(data, 'foo.zoo.lander')).to.equal(undefined);
-	});
+				it("should get nested-level values", function () {
+					expect(dottie.get(data, 'foo.bar')).to.equal('baz');
+				});
 
-	it("should return false values properly", function () {
-		expect(dottie.get(data, 'false.value')).to.equal(false);
-	});
+				it("should get nested-level values multiple times", function () {
+					expect(dottie.get(data, 'foo.bar')).to.equal('baz');
+					expect(dottie.get(data, 'foo.bar')).to.equal('baz');
+					expect(dottie.get(data, 'foo.bar')).to.equal('baz');
+					expect(dottie.get(data, 'foo.bar')).to.equal('baz');
+				});
 
-	it("should return the default value passed in if not found", function() {
-		expect(dottie.get(data, 'foo.zoo.lander', 'novalue')).to.equal('novalue');
-	});
+				it("should return undefined if not found", function () {
+					expect(dottie.get(data, 'foo.zoo.lander')).to.equal(undefined);
+				});
 
-	it("should return null of the value is null and not undefined", function() {
-		expect(dottie.get(data, 'null.value')).to.equal(null);
-	});
+				it("should return false values properly", function () {
+					expect(dottie.get(data, 'false.value')).to.equal(false);
+				});
 
-	it("should return undefined if accessing a child property of a null value", function () {
-		expect(dottie.get(data, 'nullvalue.childProp')).to.equal(undefined);
-		expect(dottie.get(data, 'null.value.childProp')).to.equal(undefined);
-	});
+				it("should return the default value passed in if not found", function() {
+					expect(dottie.get(data, 'foo.zoo.lander', 'novalue')).to.equal('novalue');
+				});
 
-	it("should return undefined if accessing a child property of a string value", function () {
-		expect(dottie.get(data, 'foo.bar.baz.yapa')).to.equal(undefined);
-	});
+				it("should return null of the value is null and not undefined", function() {
+					expect(dottie.get(data, 'null.value')).to.equal(null);
+				});
 
-	it('should get nested values with keys that have dots', function () {
-		expect(dottie.get(data, ['nested.dot', 'key'])).to.equal('value');
+				it("should return undefined if accessing a child property of a null value", function () {
+					expect(dottie.get(data, 'nullvalue.childProp')).to.equal(undefined);
+					expect(dottie.get(data, 'null.value.childProp')).to.equal(undefined);
+				});
+
+				it("should return undefined if accessing a child property of a string value", function () {
+					expect(dottie.get(data, 'foo.bar.baz.yapa')).to.equal(undefined);
+				});
+
+				it('should get nested values with keys that have dots', function () {
+					expect(dottie.get(data, ['nested.dot', 'key'])).to.equal('value');
+				});
+			});
+		});
 	});
 });
