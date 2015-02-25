@@ -7,7 +7,7 @@
     "microtime": "^1.2.0",
     "mocha": "~1.14.0"
   },
-  "description": "Object traversing/manipulation util",
+  "description": "Fast and save object nested object access and manipulation in JavaScript",
   "author": "Mick Hansen <maker@mhansen.io>",
   "repository": {
     "type": "git",
