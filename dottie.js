@@ -83,10 +83,11 @@
 
       if (typeof current !== 'object') {
         // If force === true, bruteforce the path without throwing errors.
-        if (force === true)
+        if (force === true) {
           current = {};
-        else
+        } else {
           throw new Error('Target key is not suitable for a nested value (it is either not undefined or not an object)');
+        }
       }
 
       if (index == (length - 1)) {
