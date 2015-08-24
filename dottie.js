@@ -72,7 +72,7 @@
   };
 
   // Set nested value
-  Dottie.set = function(object, path, value) {
+  Dottie.set = function(object, path, value, force) {
     var pieces = Array.isArray(path) ? path : path.split('.'), current = object, piece, length = pieces.length;
 
     for (var index = 0; index < length; index++) {
@@ -81,7 +81,13 @@
         current[piece] = {};
       }
 
-      if (typeof current !== 'object') throw new Error('Target key is not suitable for a nested value (it is either not undefined or not an object)');
+      if (typeof current !== 'object') {
+        // If force === true, bruteforce the path without throwing errors.
+        if (force === true)
+          current = {};
+        else
+          throw new Error('Target key is not suitable for a nested value (it is either not undefined or not an object)');
+      }
 
       if (index == (length - 1)) {
         current[piece] = value;
