@@ -38,4 +38,11 @@ describe("dottie.set", function () {
       dottie.set(data, 'foo.bar.baz', 'someValue');
     }).to.throwError();
   });
+
+  it('should overwrite a nested non-object value on force: true', function () {
+    dottie.set(data, 'foo.bar.baz', 'someValue', {
+      force: true
+    });
+    expect(data.foo.bar.baz).to.equal('someValue');
+  });
 });

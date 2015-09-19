@@ -71,13 +71,12 @@
     return (object === undefined ? defaultVal : object);
   };
   
-  // Check if value exists -- sugar
   Dottie.exists = function(object, path) {
-    return !!Dottie.get(object, path);
+    return Dottie.get(object, path) !== undefined;
   };
 
   // Set nested value
-  Dottie.set = function(object, path, value, force) {
+  Dottie.set = function(object, path, value, options) {
     var pieces = Array.isArray(path) ? path : path.split('.'), current = object, piece, length = pieces.length;
 
     if (typeof current !== 'object') {
@@ -89,19 +88,19 @@
 
       // Create namespace (object) where none exists.
       // If `force === true`, bruteforce the path without throwing errors.
-      if (!hasOwnProp.call(current, piece) || current[piece] === undefined || (typeof current[piece] !== 'object' && force === true)) {
+      if (!hasOwnProp.call(current, piece) || current[piece] === undefined || (typeof current[piece] !== 'object' && options && options.force === true)) {
         current[piece] = {};
-      }
-      
-      // We do not overwrite existing path pieces by default
-      if (typeof current[piece] !== 'object') {
-          throw new Error('Target key "' + piece + '" is not suitable for a nested value. (It is in use as non-object. Set `force` to `true` to override.)');
       }
 
       if (index == (length - 1)) {
         // Set final value
         current[piece] = value;
       } else {
+        // We do not overwrite existing path pieces by default
+        if (typeof current[piece] !== 'object') {
+          throw new Error('Target key "' + piece + '" is not suitable for a nested value. (It is in use as non-object. Set `force` to `true` to override.)');
+        }
+
         // Traverse next in path
         current = current[piece];
       }
