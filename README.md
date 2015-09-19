@@ -35,6 +35,9 @@ Sets nested value, creates nested structure if needed
 ```js
 dottie.set(values, 'some.nested.value', someValue);
 dottie.set(values, ['some.dot.included', 'value'], someValue);
+dottie.set(values, 'some.nested.object', someValue, {
+  force: true // force overwrite defined non-object keys into objects if needed
+});
 ```
 
 ### Transform object

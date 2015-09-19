@@ -70,26 +70,43 @@
 
     return (object === undefined ? defaultVal : object);
   };
+  
+  Dottie.exists = function(object, path) {
+    return Dottie.get(object, path) !== undefined;
+  };
 
   // Set nested value
-  Dottie.set = function(object, path, value) {
+  Dottie.set = function(object, path, value, options) {
     var pieces = Array.isArray(path) ? path : path.split('.'), current = object, piece, length = pieces.length;
+
+    if (typeof current !== 'object') {
+        throw new Error('Parent is not an object.');
+    }
 
     for (var index = 0; index < length; index++) {
       piece = pieces[index];
-      if (!hasOwnProp.call(current, piece) || current[piece] === undefined) {
+
+      // Create namespace (object) where none exists.
+      // If `force === true`, bruteforce the path without throwing errors.
+      if (!hasOwnProp.call(current, piece) || current[piece] === undefined || (typeof current[piece] !== 'object' && options && options.force === true)) {
         current[piece] = {};
       }
 
-      if (typeof current !== 'object') throw new Error('Target key is not suitable for a nested value (it is either not undefined or not an object)');
-
       if (index == (length - 1)) {
+        // Set final value
         current[piece] = value;
       } else {
+        // We do not overwrite existing path pieces by default
+        if (typeof current[piece] !== 'object') {
+          throw new Error('Target key "' + piece + '" is not suitable for a nested value. (It is in use as non-object. Set `force` to `true` to override.)');
+        }
+
+        // Traverse next in path
         current = current[piece];
       }
     }
 
+    // Is there any case when this is relevant? It's also the last line in the above for-loop
     current[piece] = value;
   };
 
