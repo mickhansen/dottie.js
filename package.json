@@ -2,9 +2,7 @@
   "name": "dottie",
   "version": "1.0.0",
   "devDependencies": {
-    "benchmark": "^1.0.0",
     "expect.js": "~0.2.0",
-    "microtime": "^1.2.0",
     "mocha": "~1.14.0"
   },
   "description": "Fast and safe nested object access and manipulation in JavaScript",
