@@ -70,7 +70,7 @@
 
     return (object === undefined ? defaultVal : object);
   };
-  
+
   Dottie.exists = function(object, path) {
     return Dottie.get(object, path) !== undefined;
   };
@@ -191,6 +191,30 @@
     }
 
     return flattened;
+  };
+
+  Dottie.paths = function(object, prefixes) {
+    var paths = [];
+    var value;
+    var key;
+
+    prefixes = prefixes || [];
+
+    if (typeof object === 'object') {
+      for (key in object) {
+        value = object[key];
+
+        if (typeof value === 'object') {
+          paths = paths.concat(Dottie.paths(value, prefixes.concat([key])));
+        } else {
+          paths.push(prefixes.concat(key).join('.'));
+        }
+      }
+    } else {
+      throw new Error('Paths was called with non-object argument.');
+    }
+
+    return paths;
   };
 
   if (typeof module !== 'undefined' && module.exports) {
