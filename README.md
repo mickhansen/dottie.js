@@ -85,6 +85,19 @@ var transformed = dottie.transform(values, { delimiter: '_' });
 */
 ```
 
+### Get paths in object
+```js
+var object = {
+  a: 1,
+  b: {
+    c: 2,
+    d: { e: 3 }
+  }
+};
+
+dottie.paths(object); // ["a", "b.c", "b.d.e"];
+```
+
 ## Performance
 
 `0.3.1` and up ships with `dottie.memoizePath: true` by default, if this causes any bugs, please try setting it to false
