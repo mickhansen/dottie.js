@@ -24,6 +24,18 @@
     }
   };
 
+  var reverseDupArray = function (array) {
+    var result = new Array(array.length);
+    var index  = array.length;
+    var arrayMaxIndex = index - 1;
+
+    while (index--) {
+      result[arrayMaxIndex - index] = array[index];
+    }
+
+    return result;
+  };
+
   var Dottie = function() {
     var args = Array.prototype.slice.call(arguments);
 
@@ -60,7 +72,7 @@
         names = path.split('.').reverse();
       }
     } else if (Array.isArray(path)) {
-      names = path.reverse();
+      names = reverseDupArray(path);
     }
 
     while (names.length && (object = object[names.pop()]) !== undefined && object !== null);

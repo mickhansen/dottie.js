@@ -95,7 +95,10 @@ describe("dottie.get", function () {
         });
 
         it('should get nested values with keys that have dots', function () {
-          expect(dottie.get(data, ['nested.dot', 'key'])).to.equal('value');
+          var path = ['nested.dot', 'key'];
+
+          expect(dottie.get(data, path)).to.equal('value');
+          expect(path).to.eql(['nested.dot', 'key']);
         });
       });
     });
