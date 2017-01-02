@@ -53,6 +53,12 @@ describe("dottie.get", function () {
           expect(dottie.get(undefined, 'foo')).to.equal(undefined);
         });
 
+        it('should return undefined if key is undefined', function () {
+          expect(dottie.get(data, undefined)).to.equal(undefined);
+          expect(dottie.get(data, null)).to.equal(undefined);
+          expect(dottie.get(data, undefined, 'default')).to.equal('default');
+        });
+
         it("should get first-level values", function () {
           expect(dottie.get(data, 'zoo')).to.equal('lander');
           expect(dottie.get(data, 'zoo')).to.equal('lander');

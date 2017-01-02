@@ -56,7 +56,9 @@
 
   // Traverse object according to path, return value if found - Return undefined if destination is unreachable
   Dottie.get = function(object, path, defaultVal) {
-    if ((object === undefined) || (object === null)) return defaultVal;
+    if ((object === undefined) || (object === null) || (path === undefined) || (path === null)) {
+        return defaultVal;
+    }
 
     var names;
 
