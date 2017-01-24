@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/mickhansen/dottie.js.svg?branch=master)](https://travis-ci.org/mickhansen/dottie.js)
 
-Dottie helps you easily (and with sacrificing too much performance) look up and play with nested keys in objects, without them throwing up in your face.
+Dottie helps you easily (and without sacrificing too much performance) look up and play with nested keys in objects, without them throwing up in your face.
 
 ## Install
     npm install dottie
