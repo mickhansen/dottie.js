@@ -12,6 +12,7 @@
     "url": "git://github.com/mickhansen/dottie.js.git"
   },
   "main": "dottie.js",
+  "typings": "dottie.d.ts",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha -t 5000 -s 100 --reporter spec test/"
   }
