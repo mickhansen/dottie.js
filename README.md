@@ -29,6 +29,8 @@ dottie.get(values, 'some.undefined.key', 'defaultval'); // returns 'defaultval'
 dottie.get(values, ['some.dot.included', 'key']); // returns 'barfoo'
 ```
 
+*Note: lodash.get() also works fine for this* 
+
 ### Set value
 Sets nested value, creates nested structure if needed
 
