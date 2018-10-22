@@ -1,4 +1,4 @@
-var expect = require("expect.js")
+var expect = require('chai').expect
   , dottie = require('../dottie');
 
 /* If people modify the array prototype Dottie should not be affected */
@@ -30,8 +30,8 @@ describe("dottie.transform", function () {
 
     var transformed = dottie.transform(values);
 
-    expect(transformed.user).not.to.be(undefined);
-    expect(transformed.user.location).not.to.be(undefined);
+    expect(transformed.user).not.to.equal(undefined);
+    expect(transformed.user.location).not.to.equal(undefined);
 
     expect(transformed.user).to.be.an('object');
     expect(transformed.user.location).to.be.an('object');
@@ -53,9 +53,9 @@ describe("dottie.transform", function () {
 
     var transformed = dottie.transform(values);
 
-    expect(transformed.user).not.to.be(undefined);
-    expect(transformed.user.location).not.to.be(undefined);
-    expect(transformed.project).not.to.be(undefined);
+    expect(transformed.user).not.to.equal(undefined);
+    expect(transformed.user.location).not.to.equal(undefined);
+    expect(transformed.project).not.to.equal(undefined);
 
     expect(transformed.user).to.be.an('object');
     expect(transformed.user.location).to.be.an('object');
@@ -75,9 +75,9 @@ describe("dottie.transform", function () {
 
     var transformed = dottie.transform(values);
 
-    expect(transformed.client).not.to.be(undefined);
-    expect(transformed.hasOwnProperty('client')).to.be.ok(); // Ensure that the property is actually on the object itself, not on the prototype.
-    expect(transformed.customer).not.to.be(undefined);
+    expect(transformed.client).not.to.equal(undefined);
+    expect(transformed.hasOwnProperty('client')).to.be.true; // Ensure that the property is actually on the object itself, not on the prototype.
+    expect(transformed.customer).not.to.equal(undefined);
 
     expect(transformed.customer).to.be.an('object');
 
@@ -96,9 +96,9 @@ describe("dottie.transform", function () {
 
     var transformed = dottie.transform(values);
 
-    expect(transformed.section.layout).to.be(null);
-    expect(transformed['section.layout.id']).to.be(undefined);
-    expect(transformed['section.layout.name']).to.be(undefined);
+    expect(transformed.section.layout).to.equal(null);
+    expect(transformed['section.layout.id']).to.equal(undefined);
+    expect(transformed['section.layout.name']).to.equal(undefined);
   });
 
   it("supports arrays", function () {
@@ -133,9 +133,9 @@ describe("dottie.transform", function () {
 
     var transformed = dottie.transform(values, { delimiter: '_' });
 
-    expect(transformed.user).not.to.be(undefined);
-    expect(transformed.user.location).not.to.be(undefined);
-    expect(transformed.project).not.to.be(undefined);
+    expect(transformed.user).not.to.equal(undefined);
+    expect(transformed.user.location).not.to.equal(undefined);
+    expect(transformed.project).not.to.equal(undefined);
 
     expect(transformed.user).to.be.an('object');
     expect(transformed.user.location).to.be.an('object');

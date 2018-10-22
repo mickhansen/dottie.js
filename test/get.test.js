@@ -1,4 +1,4 @@
-var expect = require("expect.js")
+var expect = require('chai').expect
   , dottie = require('../dottie');
 
 /* If people modify the array prototype Dottie should not be affected */

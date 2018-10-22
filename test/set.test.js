@@ -1,4 +1,4 @@
-var expect = require("expect.js")
+var expect = require('chai').expect
   , dottie = require('../dottie');
 
 describe("dottie.set", function () {
@@ -36,7 +36,7 @@ describe("dottie.set", function () {
   it("should throw error when setting a nested value on an existing key with a non-object value", function() {
     expect(function () {
       dottie.set(data, 'foo.bar.baz', 'someValue');
-    }).to.throwError();
+    }).to.throw();
   });
 
   it('should overwrite a nested non-object value on force: true', function () {
