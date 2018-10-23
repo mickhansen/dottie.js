@@ -4,26 +4,6 @@
   // Weird IE shit, objects do not have hasOwn, but the prototype does...
   var hasOwnProp = Object.prototype.hasOwnProperty;
 
-  // Object cloning function, uses jQuery/Underscore/Object.create depending on what's available
-
-  var clone = function (object) {
-    if (typeof Object.hasOwnProperty !== 'undefined') {
-      var target = {};
-      for (var i in object) {
-        if (hasOwnProp.call(object, i)) {
-          target[i] = object[i];
-        }
-      }
-      return target;
-    }
-    if (typeof jQuery !== 'undefined') {
-      return jQuery.extend({}, object);
-    }
-    if (typeof _ !== 'undefined') {
-      return _.extend({}, object);
-    }
-  };
-
   var reverseDupArray = function (array) {
     var result = new Array(array.length);
     var index  = array.length;

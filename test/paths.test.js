@@ -1,11 +1,11 @@
-var expect = require("expect.js")
+var expect = require('chai').expect
   , dottie = require("../dottie");
 
 describe("dottie.paths", function() {
   it("throws for non-objects", function() {
     expect(function() {
       dottie.paths("no object")
-    }).to.throwError();
+    }).to.throw();
   });
 
   it("returns the keys of a flat object", function() {
