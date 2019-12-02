@@ -198,7 +198,7 @@
       for (key in object) {
         value = object[key];
 
-        if (typeof value === 'object') {
+        if (typeof value === 'object' && value !== null) {
           paths = paths.concat(Dottie.paths(value, prefixes.concat([key])));
         } else {
           paths.push(prefixes.concat(key).join('.'));

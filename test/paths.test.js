@@ -23,4 +23,13 @@ describe("dottie.paths", function() {
 
     expect(dottie.paths(object)).to.eql(["a", "b.c", "b.d.e"]);
   });
+
+  it("includes keys of null objects", function() {
+    var object = {
+      nonNullKey: 1,
+      nullKey: null
+    };
+
+    expect(dottie.paths(object)).to.eql(["nonNullKey", "nullKey"]);
+  });
 });
