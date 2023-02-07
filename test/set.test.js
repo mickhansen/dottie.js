@@ -28,12 +28,32 @@ describe("dottie.set", function () {
     expect(data.values.level1).to.equal('foo');
   });
 
+  it("should throw when overwriting a nested null value with force: false", function () {
+    var data = {
+      'values': null
+    };
+
+
+    expect(function () {
+      dottie.set(data, 'values.level1', 'foo');
+    }).to.throw();
+  });
+
+  it("should handle setting a nested value on an null value (should convert null to object) with force: true", function () {
+    var data = {
+      'values': null
+    };
+
+    dottie.set(data, 'values.level1', 'foo', { force: true });
+    expect(data.values.level1).to.equal('foo');
+  });
+
   it('should be able to set with an array path', function () {
     dottie.set(data, ['some.dot.containing', 'value'], 'razzamataz');
     expect(data['some.dot.containing'].value).to.equal('razzamataz');
   });
 
-  it("should throw error when setting a nested value on an existing key with a non-object value", function() {
+  it("should throw error when setting a nested value on an existing key with a non-object value", function () {
     expect(function () {
       dottie.set(data, 'foo.bar.baz', 'someValue');
     }).to.throw();

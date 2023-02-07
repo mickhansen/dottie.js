@@ -82,7 +82,10 @@
 
       // Create namespace (object) where none exists.
       // If `force === true`, bruteforce the path without throwing errors.
-      if (!hasOwnProp.call(current, piece) || current[piece] === undefined || (typeof current[piece] !== 'object' && options && options.force === true)) {
+      if (
+        !hasOwnProp.call(current, piece)
+        || current[piece] === undefined
+        || ((typeof current[piece] !== 'object' || current[piece] === null) && options && options.force === true)) {
         current[piece] = {};
       }
 
@@ -91,7 +94,7 @@
         current[piece] = value;
       } else {
         // We do not overwrite existing path pieces by default
-        if (typeof current[piece] !== 'object') {
+        if (typeof current[piece] !== 'object' || current[piece] === null) {
           throw new Error('Target key "' + piece + '" is not suitable for a nested value. (It is in use as non-object. Set `force` to `true` to override.)');
         }
 
