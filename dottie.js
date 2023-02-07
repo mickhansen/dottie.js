@@ -82,7 +82,7 @@
 
       // Create namespace (object) where none exists.
       // If `force === true`, bruteforce the path without throwing errors.
-      if (!hasOwnProp.call(current, piece) || current[piece] === undefined || (typeof current[piece] !== 'object' && options && options.force === true)) {
+      if (!hasOwnProp.call(current, piece) || current[piece] === undefined || current[piece] === null || (typeof current[piece] !== 'object' && options && options.force === true)) {
         current[piece] = {};
       }
 
