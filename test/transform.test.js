@@ -145,4 +145,16 @@ describe("dottie.transform", function () {
     expect(transformed.user.location.city).to.equal('Zanzibar City');
     expect(transformed.project.title).to.equal('dottie');
   });
+
+  it("should guard against prototype pollution", function () {
+    var values = {
+      'user.name': 'John Doe',
+      '__proto__.pollution': 'pollution'
+    };
+
+    var transformed = dottie.transform(values);
+    expect(transformed.user).not.to.equal(undefined);
+    expect(transformed.user.name).to.equal('John Doe');
+    expect(transformed.__proto__.pollution).to.be.undefined;
+  });
 });

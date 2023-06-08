@@ -65,4 +65,12 @@ describe("dottie.set", function () {
     });
     expect(data.foo.bar.baz).to.equal('someValue');
   });
+
+  it('should not attempt to set __proto__', function () {
+    var data = {};
+
+    dottie.set(data, '__proto__.pollution', 'polluted');
+
+    expect(data.__proto__.pollution).to.be.undefined;
+  });
 });

@@ -32,6 +32,7 @@ dottie.get(values, ['some.dot.included', 'key']); // returns 'barfoo'
 *Note: lodash.get() also works fine for this* 
 
 ### Set value
+
 Sets nested value, creates nested structure if needed
 
 ```js
@@ -41,6 +42,8 @@ dottie.set(values, 'some.nested.object', someValue, {
   force: true // force overwrite defined non-object keys into objects if needed
 });
 ```
+
+If you accept arbitrary/user-defined paths to `set` you should call `Object.preventExtensions(values)` first to guard against potential pollution.
 
 ### Transform object
 Transform object from keys with dottie notation to nested objects
