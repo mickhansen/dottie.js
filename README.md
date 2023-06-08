@@ -43,8 +43,6 @@ dottie.set(values, 'some.nested.object', someValue, {
 });
 ```
 
-If you accept arbitrary/user-defined paths to `set` you should call `Object.preventExtensions(values)` first to guard against potential pollution.
-
 ### Transform object
 Transform object from keys with dottie notation to nested objects
 

@@ -130,7 +130,7 @@
       , piecesLength
       , piece
       , current
-      , transformed = {}
+      , transformed = Object.preventExtensions({})
       , key
       , keys = Object.keys(object)
       , length = keys.length
