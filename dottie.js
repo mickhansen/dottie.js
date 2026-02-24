@@ -76,7 +76,7 @@
     // Guard against prototype pollution at ANY position in the path
     // Covers __proto__, constructor, and prototype to prevent all known vectors
     var DANGEROUS_KEYS = ['__proto__', 'constructor', 'prototype'];
-    if (pieces.some(function(p) { return DANGEROUS_KEYS.indexOf(p) !== -1; })) return;
+    if (pieces.some(function(p) { return DANGEROUS_KEYS.includes(p); })) return;
     
     if (typeof current !== 'object') {
         throw new Error('Parent is not an object.');
@@ -148,7 +148,7 @@
 
         // Guard against prototype pollution at ANY position in the path
         var DANGEROUS_KEYS = ['__proto__', 'constructor', 'prototype'];
-        if (pieces.some(function(p) { return DANGEROUS_KEYS.indexOf(p) !== -1; })) break;
+        if (pieces.some(function(p) { return DANGEROUS_KEYS.includes(p); })) break;
 
         piecesLength = pieces.length;
         current = transformed;
