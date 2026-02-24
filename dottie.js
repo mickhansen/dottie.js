@@ -72,8 +72,12 @@
   // Set nested value
   Dottie.set = function(object, path, value, options) {
     var pieces = Array.isArray(path) ? path : path.split('.'), current = object, piece, length = pieces.length;
-    if (pieces[0] === '__proto__') return;
 
+    // Guard against prototype pollution at ANY position in the path
+    // Covers __proto__, constructor, and prototype to prevent all known vectors
+    var DANGEROUS_KEYS = ['__proto__', 'constructor', 'prototype'];
+    if (pieces.some(function(p) { return DANGEROUS_KEYS.indexOf(p) !== -1; })) return;
+    
     if (typeof current !== 'object') {
         throw new Error('Parent is not an object.');
     }
@@ -142,7 +146,9 @@
       if (key.indexOf(options.delimiter) !== -1) {
         pieces = key.split(options.delimiter);
 
-        if (pieces[0] === '__proto__') break;
+        // Guard against prototype pollution at ANY position in the path
+        var DANGEROUS_KEYS = ['__proto__', 'constructor', 'prototype'];
+        if (pieces.some(function(p) { return DANGEROUS_KEYS.indexOf(p) !== -1; })) break;
 
         piecesLength = pieces.length;
         current = transformed;
