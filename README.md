@@ -1,8 +1,8 @@
+# UNMAINTAINED
+
 [![Build Status](https://travis-ci.org/mickhansen/dottie.js.svg?branch=master)](https://travis-ci.org/mickhansen/dottie.js)
 
 Dottie helps you easily (and without sacrificing too much performance) look up and play with nested keys in objects, without them throwing up in your face.
-
-**Not actively maintained. You are likely better off using lodash or ES6+**
 
 ## Install
     npm install dottie
