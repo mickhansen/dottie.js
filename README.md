@@ -17,7 +17,7 @@ Gets nested value, or undefined if unreachable, or a default value if passed.
 var values = {
   some: {
     nested: {
-        key: 'foobar';
+        key: 'foobar'
     }
   },
   'some.dot.included': {
